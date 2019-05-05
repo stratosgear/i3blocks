@@ -6,7 +6,7 @@ URGENT_VALUE=70
 
 # Hardcoded to this system
 # grep 'model name' /proc/cpuinfo | wc -l
-CPUS=4
+CPUS=$(grep 'model name' /proc/cpuinfo | wc -l)
 
 LOAD=$(cat /proc/loadavg)
 if [[ "${LOAD}" != "" ]]; then

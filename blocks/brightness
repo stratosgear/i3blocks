@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # First param is the backlight method to use: xrandr, xbacklight, kernel
-# Secon param is a percent brightnes. Larger than this, urgeny is turned on
+# Second param is a percent brightnes. Larger than this, urgeny is turned on
 INSTANCE="${BLOCK_INSTANCE:-xbacklight;75}"
 
 METHOD=$(echo "${INSTANCE}" | awk -F ';' '{print $1}')
@@ -47,7 +47,7 @@ fi
 
 percent=${percent%.*}
 
-if [[ "${percent}" -le 0 ]]; then
+if (( $(echo "${percent} < 0.0" |bc -l) ));  then
   exit
 fi
 
